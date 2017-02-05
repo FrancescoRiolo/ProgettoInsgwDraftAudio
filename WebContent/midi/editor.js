@@ -92,6 +92,8 @@ function renderThisAbc() {
 
 	for (var i = 0; i < svgNotes.length; i++)
 		svgNotes[i].setAttribute("id", "nota" + i);
+	
+	$("rect").remove();
 
 }
 
