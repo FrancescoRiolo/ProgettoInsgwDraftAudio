@@ -516,6 +516,22 @@ function ensembleAll() {
 		// gestione menu note per la modifica
 		svgNotes[i].onclick = function() {
 
+			
+			var this_elem = this;
+
+			this_id = this.id;
+			this_id_num = this_id.replace("nota", "");
+			ok_thisId = parseInt(this_id_num);
+			console.log("nota numero", ok_thisId);
+			console.log("this id num", this_id_num);
+			
+			console.log("sono quel figlio di puttana di i:",i);
+			
+			var text = $("#nota" + (ok_thisId)).attr("class");
+			var regex = new RegExp(/l\d+/);
+			var delta = parseInt(regex.exec(text).toString().substring(1));
+			
+			
 			console.log("ho clickato una cazzo di nota evviva");
 
 			$(".editNote_menu").hide();
@@ -532,18 +548,17 @@ function ensembleAll() {
 			$(".click_menu").css("top", (y + 50) + "px");
 			$(".click_menu").css("left", (x - 75) + "px");
 
-			var this_elem = this;
-
-			this_id = this.id;
-			this_id_num = this_id.replace("nota", "");
-			ok_thisId = parseInt(this_id_num) + contatoreAccapo;
-			console.log("nota numero", ok_thisId);
-			console.log("this id num", this_id_num);
+	
 
 			del.onclick = function() {
 
 				$(".click_menu").hide();
-				melody.splice(this_id_num, 1);
+				console.log("sono il delta con this_id_num",this_id_num);
+				console.log("sono il delta con delta",delta);
+				console.log("sono il delta con delta",this_id_num + delta);
+				
+				
+				melody.splice(ok_thisId + delta, 1);
 				abcText.value = melody.join("#");
 				renderThisAbc();
 
@@ -567,7 +582,9 @@ function ensembleAll() {
 				edit_mod.onclick = function() {
 					overWrite();
 					$(".editNote_menu").hide();
-					melody[ok_thisId] = edit_text.value;
+					
+					console.log("mod.dete",delta);
+					melody[ok_thisId+delta] = edit_text.value;
 					abcText.value = melody.join("#");
 					console.log("valore editText Modify", edit_text.value);
 					renderThisAbc();
