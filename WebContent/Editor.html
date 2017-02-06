@@ -472,7 +472,7 @@ K:C%
 					class="btn btn-default symbolButton" type="button"></button>
 				<button onclick="writeZ()" id="restButton"
 					class="btn btn-default symbolButton" type="button"></button>
-				<button id="enldineButton" class="btn btn-default symbolButton"
+				<button onclick="autoQ()" id="endlineButton" class="btn btn-default symbolButton"
 					type="button"></button>
 				<button onclick="writeAltoClef()" id="clefalto"
 					class="btn btn-default symbolButton" type="button"></button>
@@ -584,7 +584,7 @@ K:C%
 			<div id="Spartito" class="col-md-12 col-sm-12">
 				<div id="paper0"
 					class="paper col-sm-8 col-sm-push-2 col-md-8 col-md-push-2">
-					<div  id="score" class="abcScore">SCORE</div>
+					<div id="score" class="abcScore">SCORE</div>
 				</div>
 			</div>
 		</div>
@@ -602,13 +602,28 @@ K:C%
 
 
 	</div>
-
+	<!--  
 	<div id="noteMenuEdit" class="noteMenuEdit">
-		<input id="editNote" type="text" placeholder="insert new value">
+		<input id="edit2Note" type="text" placeholder="insert new value">
 		<button class="btn btn-default buttonMenuEdit" id="modify">Modify</button>
 		<button class="btn btn-default buttonMenuEdit" id="insert">Insert</button>
 		<button class="btn btn-default buttonMenuEdit" id="delete">Delete</button>
 		<button class="btn btn-default buttonMenuEdit" id="cancel1">Cancel</button>
+	</div>
+-->
+
+	<div class="click_menu">
+		<button class="btn btn-default buttonMenuEdit" id="edi_btn">Edit</button>
+		<button class="btn btn-default buttonMenuEdit" id="del_btn">Delete</button>
+		<button class="btn btn-default buttonMenuEdit" id="can_btn">Cancel</button>
+		<div id="note_index"></div>
+	</div>
+
+	<div class="editNote_menu">
+		<input  type="text" id="editNote" placeholder="  note ">
+		<button class="btn btn-default buttonMenuEdit" id="mod_btn">Modify</button>
+		<button class="btn btn-default buttonMenuEdit" id="ins_btn">Insert</button>
+		<button class="btn btn-default buttonMenuEdit" id="can_edi_btn">Cancel</button>
 	</div>
 
 </body>

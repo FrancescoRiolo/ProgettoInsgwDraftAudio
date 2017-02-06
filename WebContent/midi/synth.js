@@ -68,7 +68,7 @@ var context = new AudioContext(), oscillators = {};
 var context = new AudioContext(), oscillators = {};
 
 
-//da invocare ogni volta che cambio il metronomo
+// da invocare ogni volta che cambio il metronomo
 function setTempo(){
 	tempo = $("#metronomo").val();
 	console.log("new Tempo value is:",tempo);
@@ -228,7 +228,15 @@ function startTranscribe() {
 	
 if(document.getElementById("rec").value=="OFF"){
 			canTranscribe = true;
-			updateMetronome = setInterval(playMetronomeSound, (1000/(tempo/60))); //è meglio non approssimare con round altrimenti da problemif
+			updateMetronome = setInterval(playMetronomeSound, (1000/(tempo/60))); // è
+																					// meglio
+																					// non
+																					// approssimare
+																					// con
+																					// round
+																					// altrimenti
+																					// da
+																					// problemif
 			document.getElementById("rec").value="ON";
 			 return;
 	}
@@ -270,20 +278,30 @@ function Transcribe(note , duration) {
 // to do usare il join per castare un array in string senza virgole
 
 function renderSheet (melodyArray,timingArray){
+	 var v = document.getElementById('abc');
 	
 	 var melodyString = "";
+	 var stato = v.value;
 	 
 	 quantize (melodyArray,timingArray);
 
-	 for (i = 0 ; i<melodyArray.length;i++)
-	 	melodyString += melodyArray[i];
+	 for (i = 0 ; i<melodyArray.length;i++){
+		 overWrite();
+		 stato = stato + String(melodyArray[i]);
+		 console.log("stato",stato);
+		 	addState(stato);
+	 }
+	 
+
 
 // console.log("string",melodyString);
 	 
-	 var v = document.getElementById('abc');
-	 v.value = v.value + melodyString;
-	 ABCJS.renderAbc("paper0", v.value);
-	 addState(v.value);
+	
+	 v.value = v.value + melodyArray.join("");
+	// ABCJS.renderAbc("paper0", v.value);
+// addState(v.value);
+	 
+	 addToMelody(melodyArray);
 	 ensembleAll();
 
 	
