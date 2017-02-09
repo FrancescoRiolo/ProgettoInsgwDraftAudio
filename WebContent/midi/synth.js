@@ -217,6 +217,7 @@ var column = 0;
 
 function playMetronomeSound(){
 	var snd = new Audio('mSound.mp3');
+	snd.volume = 1.0;
     snd.play();
     beat++;
 
