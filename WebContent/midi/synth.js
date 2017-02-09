@@ -5,13 +5,16 @@ var keyboard = new QwertyHancock({
 	octaves : 5,
 	
 
+
 });
 
 // master Volume Controls
 var context = new AudioContext(), masterVolume = context.createGain(), oscillators = {};
 masterVolume.gain.value = 0.8;
 masterVolume.connect(context.destination);
+//document.getElementById("F3").style.backgroundColor = "green";
 
+//$("#F3").css("background-color","green");
 
 // variabili da correggere
 var melodyArray= [] ;
@@ -24,7 +27,7 @@ var lastTimeInput;
 
 // lo definirà l'utente questo parametro
 var tempo = $("#metronomo").val();
-console.log("Tempo value is:",tempo);
+//console.log("Tempo value is:",tempo);
 
 
 var canWritePause = true;
@@ -38,6 +41,7 @@ keyboard.keyDown = function(note, frequency) {
 	currentTimeInput = sourceTime.getTime();
 // console.log("premuto con tastiera", note)
 	playNote(frequency);
+	
 	
 
 };
@@ -71,7 +75,7 @@ var context = new AudioContext(), oscillators = {};
 // da invocare ogni volta che cambio il metronomo
 function setTempo(){
 	tempo = $("#metronomo").val();
-	console.log("new Tempo value is:",tempo);
+	//console.log("new Tempo value is:",tempo);
 }
 
 
@@ -118,7 +122,7 @@ function onMIDIMessage(message) {
 		var tipo = document.getElementById(midi_map[message.data[1]]).getAttribute('data-note-type');
 		stopNote(frequency);
 		
-		// TRASCRIZIONE NORMALA
+		// TRASCRIZIONE NORMALE
 // Transcribe(midi_map[message.data[1]]);
 		var sourceTime2 = new Date();
 		lastTimeInput = sourceTime2.getTime();
@@ -151,7 +155,7 @@ function midiNoteToFrequency(note) {
 // web audio api oscillatori e conversione segnale a suono
 function playNote(frequency) {
 	oscillators[frequency] = context.createOscillator();
-	oscillators[frequency].type = "sine";
+	oscillators[frequency].type = "square";
 	oscillators[frequency].frequency.value = frequency;
 	oscillators[frequency].connect(context.destination);
 	oscillators[frequency].start(context.currentTime);
@@ -191,10 +195,23 @@ function writePause (){
 
 
 
+var measure ;
+
+
+function calculateSignature(){
+	var signature = $('#timeSignature').val();
+//	console.log("sign",signature);
+	var res = parseInt(signature.substr(0, 1));
+	
+	measure = res;
+//	console.log("global",measure);
+}
+
+
+
 
 // controllo metronomo e trascrizione
 
-var measure = 8;
 var beat = 0;
 var column = 0;
 
@@ -204,7 +221,7 @@ function playMetronomeSound(){
     beat++;
 
  // console.log ("beats:",beat);
-    console.log ("column:",column);
+ //   console.log ("column:",column);
     
     writePause();
     
@@ -249,7 +266,7 @@ function stopTranscribe() {
 
 	clearTimeout(updateMetronome);
 	canTranscribe = false;
-	console.log("transcribe",canTranscribe);
+//	console.log("transcribe",canTranscribe);
 	// rendering da isolare in una funzione
 	renderSheet(melodyArray,timingArray);
 	melodyArray = [];
@@ -288,7 +305,7 @@ function renderSheet (melodyArray,timingArray){
 	 for (i = 0 ; i<melodyArray.length;i++){
 		 overWrite();
 		 stato = stato + String(melodyArray[i]);
-		 console.log("stato",stato);
+		// console.log("stato",stato);
 		 	addState(stato);
 	 }
 	 
@@ -356,7 +373,7 @@ function quantize (melodyArray , timingArray){
 			melodyArray.splice(j+1,0,"|");
 			timingArray.splice(j+1,0,"|");
 			// console.log(melodyArray);
-			console.log(timingArray);
+			//console.log(timingArray);
 			battuta = 0;
 			numTotBattute ++;
 		}
@@ -372,7 +389,36 @@ function quantize (melodyArray , timingArray){
 
 var midi_map = {
 
+
+		21 : 'A0',
+		22 : 'A#0',
+		23 : 'B0',	
+	
+		24 : 'C1',
+		25 : 'C#1',
+		26 : 'D1',
+		27 : 'D#1',
+		28 : 'E1',
+		29 : 'F1',
+		30 : 'F#1',
+		31 : 'G1',
+		32 : 'G#1',
+		33 : 'A1',
+		34 : 'A#1',
+		35 : 'B1',	
 		
+		36 : 'C2',
+		37 : 'C#2',
+		38 : 'D2',
+		39 : 'D#2',
+		40 : 'E2',
+		41 : 'F2',
+		42 : 'F#2',
+		43 : 'G2',
+		44 : 'G#2',
+		45 : 'A2',
+		46 : 'A#2',
+		47 : 'B2',	
 		
 		
 	48 : 'C3',
@@ -427,6 +473,20 @@ var midi_map = {
 	94 : 'A#6',
 	95 : 'B6',
 	96 : 'C7',
+	
+	97 : 'C#7',
+	98: 'D7',
+	99: 'D#7',
+	10:'E7',
+	101:'F7',
+	102:'F#7',
+	103:'G7',
+	104:'G#7',
+	105:'A7',
+	106:'A#7',
+	107:'B7',
+	108:'C8',
+	
 
 };
 
@@ -474,6 +534,7 @@ var transcription_map = {
 	G7 : "#G''''",
 	G8 : "#G'''''",
 
+	A1 : "#A,,",
 	A2 : "#A,",
 	A3 : "#A",
 	A4 : "#A'",
@@ -482,6 +543,7 @@ var transcription_map = {
 	A7 : "#A''''",
 	A8 : "#A'''''",
 
+	B1 : "#B,,",
 	B2 : "#B,",
 	B3 : "#B",
 	B4 : "#B'",
@@ -533,6 +595,7 @@ var transcription_map = {
 	'G#7' : "#^G''''",
 	'G#8' : "#^G'''''",
 
+	'A#1' : "#^A,,",
 	'A#2' : "#^A,",
 	'A#3' : "#^A",
 	'A#4' : "#^A'",

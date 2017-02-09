@@ -52,6 +52,7 @@ function init() {
 
 	paper = document.getElementById('paper0');
 
+	calculateSignature();
 	play_this = document.getElementById('play');
 	stop_this = document.getElementById('stop');
 
@@ -60,37 +61,29 @@ function init() {
 
 	headersContainer = otherAbc.value;
 	addState(abcText.value);
-	console.log("value", abcText);
+	//console.log("value", abcText);
 
 }
 
 /*
-function autoQ() {
-	console.log("asdasgadgasjfjn");
-	var cont = 0;
-	for (i = 0; i < melody.length; i++) {
-		if (melody[i] !== "\n")
-			cont++
-
-		if (cont === 5) {
-			melody.splice(i + 1, 0, "\n");
-			abcText.value = abcText.value + "\n";
-			cont = 0;
-		}
-	}
-	
-	
-	
-	
-	//renderThisAbc();
-}*/
+ * function autoQ() { console.log("asdasgadgasjfjn"); var cont = 0; for (i = 0;
+ * i < melody.length; i++) { if (melody[i] !== "\n") cont++
+ * 
+ * if (cont === 5) { melody.splice(i + 1, 0, "\n"); abcText.value =
+ * abcText.value + "\n"; cont = 0; } }
+ * 
+ * 
+ * 
+ * 
+ * //renderThisAbc(); }
+ */
 
 function overWrite() {
 
 	states.splice(levels, states.length);
 	melody.splice(levels - 1, melody.length);
-	console.log("numero di stati dopo overwrite:", states.length);
-	console.log("numero di livelli dopo overwrite:", levels);
+	//console.log("numero di stati dopo overwrite:", states.length);
+	//console.log("numero di livelli dopo overwrite:", levels);
 
 }
 
@@ -111,9 +104,9 @@ function reset() {
 
 function undo() {
 
-	console.log("undo prima", levels);
-	console.log("lunghezza", states.length);
-	console.log("array melody undo", melody);
+	//console.log("undo prima", levels);
+	//console.log("lunghezza", states.length);
+	//console.log("array melody undo", melody);
 
 	if (levels > 1) {
 		abcText.value = states[levels - 2];
@@ -121,9 +114,7 @@ function undo() {
 
 	}
 
-	
-
-	console.log("undo dopo", levels);
+	//console.log("undo dopo", levels);
 	ensembleAll();
 }
 
@@ -134,27 +125,25 @@ function redo() {
 			melody.splice(i, 1);
 		}
 	}
-	console.log("array melody redo", melody);
-	console.log("redo prima", levels);
+//	console.log("array melody redo", melody);
+//	console.log("redo prima", levels);
 	if (levels < states.length) {
 		abcText.value = states[levels];
 		levels++;
 	}
 
-	console.log("redo dopo", levels);
+	//console.log("redo dopo", levels);
 	ensembleAll();
 
 }
 
-
-
 function renderThisAbc() {
 
-	console.log("melody array", melody);
+	//console.log("melody array", melody);
 
 	addState(abcText.value);
 
-	console.log("push", abcText.value);
+//	console.log("push", abcText.value);
 	// ABCJS.renderAbc("paper0", abcText.value);
 	ensembleAll();
 
@@ -216,14 +205,14 @@ function pitch() {
 
 	}
 
-	console.log("octave", octave);
+	//console.log("octave", octave);
 	return octave;
 }
 
 function writeA() {
 
 	pushNewFigure("#A" + pitch() + length() + "#");
-	console.log("test");
+	//console.log("test");
 }
 function writeB() {
 	pushNewFigure("#B" + pitch() + length() + "#");
@@ -257,15 +246,13 @@ function writeZ() {
  * melody.splice(melody.length-2,0,symbol); }
  */
 
-
 /*
-function purgeMelody() {
-	console.log("Purge this melody");
-	console.log("array melody in purge ", JSON.stringify(melody));
-
-	for (i = 0; i < melody.length; i++)
-		console.log("elemento di melody", melody[i], "\n");
-}*/
+ * function purgeMelody() { console.log("Purge this melody"); console.log("array
+ * melody in purge ", JSON.stringify(melody));
+ * 
+ * for (i = 0; i < melody.length; i++) console.log("elemento di melody",
+ * melody[i], "\n"); }
+ */
 
 function writeChord() {
 	if (document.getElementById("chord").value == "ON") {
@@ -295,7 +282,7 @@ function insertSymbolLeft(symbol) {
 	testString = melody.join("");
 	testArray = testString.split("#");
 
-	console.log("testArray", testArray);
+	//console.log("testArray", testArray);
 
 	melody = abcText.value.split("#");
 
@@ -441,6 +428,7 @@ function properties_apply() {
 			"L:" + document.getElementById('noteUnit').value + "\n",
 			"Q:" + document.getElementById('tempo').value + "\n" ];
 
+	calculateSignature();
 	headersContainer = headers.join("");
 	// mergeHeaders(headersContainer);
 	ensembleAll();
@@ -463,7 +451,7 @@ function ensembleAll() {
 			+ ' "paddingright":50, "paddingleft":15, "editable":true, "add_classes":true }]}';
 
 	param = JSON.parse(mParams);
-	//autoQ();
+	// autoQ();
 	otherAbc.value = headersContainer + abcText.value;
 
 	// array di tipo tune object da passare come parametro alla funzione di
@@ -482,32 +470,29 @@ function ensembleAll() {
 	// var battuta = document.getElementsByClassName("m");
 
 	svgNotes = $("path:not(.none, .staff, .staff-extra, .symbol, .beam-elem)"); // seleziono
-																				// tutti
-																				// i
-																				// figli
-																				// di
-																				// svg
-																				// tranne
-																				// elementi
-																				// nulli,
-																				// chiavi
-																				// varie,
-																				// simbolo
-																				// della
-																				// time
-																				// signature
-																				// ecc
-																				// ecc
+	// tutti
+	// i
+	// figli
+	// di
+	// svg
+	// tranne
+	// elementi
+	// nulli,
+	// chiavi
+	// varie,
+	// simbolo
+	// della
+	// time
+	// signature
+	// ecc
+	// ecc
 	// svgNotes = document.getElementsByClassName("note");
 	var contatoreAccapo = 0;
-/*
-	for (var i = melody.length - 1; i >= 0; i--) {
-		if (melody[i] === "\n") {
-			melody.splice(i, 1);
-		}
-	}
-*/
-	console.log("array melody maledetto", melody);
+	/*
+	 * for (var i = melody.length - 1; i >= 0; i--) { if (melody[i] === "\n") {
+	 * melody.splice(i, 1); } }
+	 */
+	//console.log("array melody maledetto", melody);
 
 	for (var i = 0; i < svgNotes.length; i++) {
 		svgNotes[i].setAttribute("id", "nota" + i);
@@ -516,23 +501,25 @@ function ensembleAll() {
 		// gestione menu note per la modifica
 		svgNotes[i].onclick = function() {
 
-			
 			var this_elem = this;
 
 			this_id = this.id;
 			this_id_num = this_id.replace("nota", "");
 			ok_thisId = parseInt(this_id_num);
-			console.log("nota numero", ok_thisId);
-			console.log("this id num", this_id_num);
-			
-			console.log("sono quel figlio di puttana di i:",i);
-			
+			//console.log("nota numero", ok_thisId);
+			//console.log("this id num", this_id_num);
+
+		//	console.log("sono i:", i);
+
 			var text = $("#nota" + (ok_thisId)).attr("class");
+			// \d prende solo un digit singolo // \d+ prende la prima sequenza
+			// che gli capita a tiro
+			// la g non ci vuole dato che a me serve solo la prima occorrenza
+			// della sequenza, e non le sequenze globali
 			var regex = new RegExp(/l\d+/);
 			var delta = parseInt(regex.exec(text).toString().substring(1));
-			
-			
-			console.log("ho clickato una cazzo di nota evviva");
+
+			//console.log("ho clickato una nota evviva");
 
 			$(".editNote_menu").hide();
 
@@ -541,23 +528,20 @@ function ensembleAll() {
 			x1 = x;
 			y1 = y;
 
-			console.log("coordinate:", x, y);
+			//console.log("coordinate:", x, y);
 
 			$(".click_menu").show();
 
 			$(".click_menu").css("top", (y + 50) + "px");
 			$(".click_menu").css("left", (x - 75) + "px");
 
-	
-
 			del.onclick = function() {
 
 				$(".click_menu").hide();
-				console.log("sono il delta con this_id_num",this_id_num);
-				console.log("sono il delta con delta",delta);
-				console.log("sono il delta con delta",this_id_num + delta);
-				
-				
+			//	console.log("sono il delta con this_id_num", this_id_num);
+			//	console.log("sono il delta con delta", delta);
+			//	console.log("sono il delta con delta", this_id_num + delta);
+
 				melody.splice(ok_thisId + delta, 1);
 				abcText.value = melody.join("#");
 				renderThisAbc();
@@ -582,11 +566,11 @@ function ensembleAll() {
 				edit_mod.onclick = function() {
 					overWrite();
 					$(".editNote_menu").hide();
-					
-					console.log("mod.dete",delta);
-					melody[ok_thisId+delta] = edit_text.value;
+
+				//	console.log("mod.dete", delta);
+					melody[ok_thisId + delta] = edit_text.value;
 					abcText.value = melody.join("#");
-					console.log("valore editText Modify", edit_text.value);
+					//console.log("valore editText Modify", edit_text.value);
 					renderThisAbc();
 				}
 
@@ -595,7 +579,7 @@ function ensembleAll() {
 					$(".editNote_menu").hide();
 					melody.splice(ok_thisId + 1, 0, edit_text.value);
 					abcText.value = melody.join("#");
-					console.log("valore editText Insert", edit_text.value);
+				//	console.log("valore editText Insert", edit_text.value);
 					renderThisAbc();
 
 				}
@@ -606,7 +590,7 @@ function ensembleAll() {
 
 	}
 
-	// ///////////////////////////////////
+	// //////////play/stop/animazione cursore /////////////////////////
 	play_this.onclick = function() {
 		ABCJS.renderPlayMidi(midi, otherAbc.value, {}, {}, {});
 		$(".midi > a").css("display", "none");
@@ -644,14 +628,150 @@ function load() {
 		var text = event.target.result.toString();
 		var text1 = text.split("--");
 
-		console.log("AAAAAAAA", text1[0]);
-		console.log("BBBBBBBB", text1[1]);
+	//	console.log("AAAAAAAA", text1[0]);
+	//	console.log("BBBBBBBB", text1[1]);
 
 		headersContainer = text1[0];
 		abcText.value = text1[1];
-		console.log("testooooo", otherAbc.value)
+	//	console.log("testooooo", otherAbc.value)
 		ensembleAll();
 	}
 	reader.readAsText(fileLoaded, "UTF-8");
+	
+	//console.log("melody after upload",melody);
 
 }
+
+// SHORTCUTS VARIE
+
+shortcut.add("Ctrl+Z", function() {
+	undo();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+shortcut.add("Ctrl+Y", function() {
+	redo();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+// shortCut delle note da 1 a 7, do...si
+
+shortcut.add("Alt+1", function() {
+	writeC();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+shortcut.add("Alt+2", function() {
+	writeD();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+shortcut.add("Alt+3", function() {
+	writeE();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+shortcut.add("Alt+4", function() {
+	writeF();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+shortcut.add("Alt+5", function() {
+	writeG();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+shortcut.add("Alt+6", function() {
+	writeA();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+shortcut.add("Alt+7", function() {
+	writeB();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+shortcut.add("Alt+P", function() {
+	writeZ();
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+shortcut.add("Alt+Enter", function() {
+	endOfTheLine();
+
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+shortcut.add("Alt+B", function() {
+	writeSingleBar();
+
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+shortcut.add("Alt+S", function() {
+	save();
+
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+shortcut.add("Alt+M", function() {
+	save();
+
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+shortcut.add("Shift+R", function() {
+	startTranscribe();
+
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
+
+
+shortcut.add("Shift+C", function() {
+	reset();
+
+}, {
+	'type' : 'keydown',
+	'propagate' : true,
+	'target' : document
+});
