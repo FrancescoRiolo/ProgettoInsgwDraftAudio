@@ -775,3 +775,8 @@ shortcut.add("Shift+C", function() {
 	'propagate' : true,
 	'target' : document
 });
+
+
+
+
+
