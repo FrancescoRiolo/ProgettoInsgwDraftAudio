@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>DraftAudio-UserPage</title>
+<title>DraftAudio</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,12 +20,8 @@
 
 <!-- Theme CSS -->
 <link href="css/grayscale.css" rel="stylesheet">
-<link href="css/profile-style.css" rel="stylesheet" type="text/css">
 
 
-
-
-<!-- Intro Header -->
 <!-- jQuery -->
 <script src="vendor/jquery/jquery.js"></script>
 
@@ -36,13 +33,11 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <!-- Theme JavaScript -->
 <script src="js/grayscale.min.js"></script>
-</head>
+<link href="css/Results.css" rel="stylesheet">
 
 
 
-
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-	<!-- Navigation -->
+<body>
 	<nav id="main-navbar" class="navbar navbar-custom navbar-fixed-top"
 		role="navigation">
 		<div class="container-fluid">
@@ -120,68 +115,47 @@
 
 	</nav>
 
-	<div class="row" id="row0">
-		<div class="col-md-6 row0-div"></div>
-	</div>
 
-
-	<div class="row " id="row1">
+	<div class="row" id="separator"></div>
 
 
 
-		<div class="row1-div col-lg-2 col-md-2" id="dashboard-container">
+	<div class="row container-fluid" id="results-section">
 
-			<div class="navbar-ex1-collapse" id="nav-vert-collapse">
-				<ul class="nav nav-pills nav-stacked admin-menu">
-					<li class="a"><a href="#" data-target-id="home"><i
-							class="fa fa-home fa-fw"></i>Home</a></li>
-					<li><a href="" data-target-id="yourScores"><i
-							class="fa fa-list-alt fa-fw"></i>Your Scores</a></li>
-					<li><a href="http://www.jquery2dotnet.com"
-						data-target-id="publicScores"><i class="fa fa-file-o fa-fw"></i>Your
-							Public Scores</a></li>
-					<li><a href="http://www.jquery2dotnet.com"
-						data-target-id="sharedScores"><i
-							class="fa fa-bar-chart-o fa-fw"></i>Shared Scores</a></li>
-					<li><a href="http://www.jquery2dotnet.com"
-						data-target-id="messages"><i class="fa fa-table fa-fw"></i>Messages</a></li>
 
-					<li><a href="http://www.jquery2dotnet.com"
-						data-target-id="settings"><i class="fa fa-cogs fa-fw"></i>Settings</a></li>
-				</ul>
+
+
+
+
+
+		<!-- the comments -->
+
+
+
+
+
+		<div class="comment-warpper  panel-group ">
+				
+				<div class="col-md-1"></div>
+
+
+
+			<div class="panel panel-default col-md-10" id="res-container">
+
+				<div class="panel panel-default">
+				  <div class="panel-heading"> <h3> <a href="www.google.it">Panel Header</a> </h3></div>
+				  <div class="panel-body">Panel Content</div>
+				</div>
+				
+				<div class="panel panel-default">
+				  <div class="panel-heading">Panel Header</div>
+				  <div class="panel-body">Panel Content</div>
+				</div>
+				
+				
+				
 			</div>
 
-		</div>
-
-
-		<div class="row1-div col-md-10 col-lg-10" id="dashboard-window">
-
-
-			<div class="col-md-9 well admin-content" id="home">
-				<p>
-					Hello! This is a forked snippet.<br> It is for users, which
-					use one-page layouts.
-				</p>
-				<p>
-					Here's the original one from BhaumikPatel: <a
-						href="http://bootsnipp.com/snippets/featured/vertical-admin-menu"
-						target="_BLANK">Vertical Admin Menu</a> <br> Thank you
-					Baumik!
-				</p>
-			</div>
-
-
-			<div class="col-md-9 well admin-content" id="yourScores">Your
-				Scores</div>
-			<div class="col-md-9 well admin-content" id="publicScores">
-				your public Scores</div>
-			<div class="col-md-9 well admin-content" id="sharedScores">
-				Scores shared with you</div>
-
-			<div class="col-md-9 well admin-content" id="messages">
-				Messages</div>
-			<div class="col-md-9 well admin-content" id="settings">
-				Settings</div>
 
 
 
@@ -196,27 +170,13 @@
 
 
 
-
 	</div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 
 </body>
-
-
 
 
 
