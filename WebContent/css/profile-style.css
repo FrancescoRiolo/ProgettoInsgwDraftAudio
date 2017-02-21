@@ -198,6 +198,11 @@ background-color: rgba(126,173,217,0.76);
 }
 	
 	
+		
+	.dropdown-menu{
+		background-color: white!important;
+	}
+	
 #main-navbar{
 	
 	background-color: rgba(22,22,22,1.00);
