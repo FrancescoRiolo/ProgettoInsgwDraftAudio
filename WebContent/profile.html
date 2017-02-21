@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>DraftAudio-UserPage</title>
+<title>DraftAudio</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -153,26 +153,86 @@
 
 		</div>
 
-
+		<!-- finestra che mostra i risultati dal menu dashboard-->
 		<div class="row1-div col-md-10 col-lg-10" id="dashboard-window">
 
 
-			<div class="col-md-9 well admin-content" id="home">
-				<p>
-					Hello! This is a forked snippet.<br> It is for users, which
-					use one-page layouts.
-				</p>
-				<p>
-					Here's the original one from BhaumikPatel: <a
-						href="http://bootsnipp.com/snippets/featured/vertical-admin-menu"
-						target="_BLANK">Vertical Admin Menu</a> <br> Thank you
-					Baumik!
-				</p>
+			<div class="col-md-9 well admin-content" id="home">home che se
+				non serve la togliamo</div>
+
+
+			<div class="col-md-9 well admin-content" id="yourScores">
+				<div class="row container-fluid center-block" id="results-section">
+					<!-- un risultato -->
+					<div class="panel panel-default col-md-10" id="res-container">
+
+						<div class=" result-panel panel panel-default">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2">
+										<a href="www.google.it">Titolo Bozza</a>
+									</div>
+
+									<div class="col-md-2">1/9/1939</div>
+									<div class="col-md-3">
+										<a href="www.youtube.it">User</a>
+									</div>
+									<div class="col-md-1 glyphicon glyphicon-heart"
+										id="draft-heart"> 539</div>
+									<div class="col-md-1 glyphicon glyphicon-eye-open"
+										id="draft-views"> 800</div>
+									<div class="col-md-1 glyphicon glyphicon-link" id="share-draft"></div>
+									<div class="col-md-1 glyphicon glyphicon-remove-circle"
+										id="delete-Draft"></div>
+
+
+									<!-- menu dei collaboratori -->
+									<div class="col-md-1" id="collaborators">
+										<a href="#" class="dropdown-toggle glyphicon glyphicon-user"
+											data-toggle="dropdown"><span class="caret"></span></a>
+										<ul class="dropdown-menu collaborators-menu" role="menu">
+											<li>
+												<div class=" col-md-12">
+													<div class="row col-md-10">Collaborator1</div>
+													<div class="col-md-2 ">
+														<a class="glyphicon glyphicon-remove" href="#"> </a>
+													</div>
+												</div>
+											</li>
+
+											<li>
+												<div class=" col-md-12">
+													<div class="row col-md-10">Collaborator2</div>
+													<div class=" col-md-2">
+														<a class="glyphicon glyphicon-remove" href="#"> </a>
+													</div>
+												</div>
+											</li>
+
+											<li>
+												<div class=" col-md-12">
+													<div class="row col-md-10">Collaborator3</div>
+													<div class=" col-md-2">
+														<a class="glyphicon glyphicon-remove" href="#"> </a>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+
+
+
+					</div>
+					<!-- un risultato -->
+
+				</div>
 			</div>
-
-
-			<div class="col-md-9 well admin-content" id="yourScores">Your
-				Scores</div>
 			<div class="col-md-9 well admin-content" id="publicScores">
 				your public Scores</div>
 			<div class="col-md-9 well admin-content" id="sharedScores">
