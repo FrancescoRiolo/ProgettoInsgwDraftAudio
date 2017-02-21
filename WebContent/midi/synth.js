@@ -1,20 +1,20 @@
+
+//inizializzazione della tastiera virtuale
 var keyboard = new QwertyHancock({
 	id : 'keyboard',
 	width : document.getElementById("quintaRiga").clientWidth,
 	height : 150,
 	octaves : 5,
-	
-
-
 });
 
-// master Volume Controls
+// master Volume Controlli
 var context = new AudioContext(), masterVolume = context.createGain(), oscillators = {};
 masterVolume.gain.value = 0.8;
 masterVolume.connect(context.destination);
-// document.getElementById("F3").style.backgroundColor = "green";
 
+// document.getElementById("F3").style.backgroundColor = "green";
 // $("#F3").css("background-color","green");
+
 
 // variabili da correggere
 var melodyArray= [] ;
@@ -34,16 +34,12 @@ var canWritePause = true;
 
 
 // listener up e down di qwerty hancock
-
 keyboard.keyDown = function(note, frequency) {
 	canWritePause = false;
 	var sourceTime = new Date();
 	currentTimeInput = sourceTime.getTime();
 // console.log("premuto con tastiera", note)
-	playNote(frequency);
-	
-	
-
+	playNote(frequency);	
 };
 
 keyboard.keyUp = function(note, frequency) {	
@@ -52,15 +48,11 @@ keyboard.keyUp = function(note, frequency) {
 	lastTimeInput = sourceTime2.getTime();
 	lastTimeInput = lastTimeInput - currentTimeInput;
 	// console.log("last", lastTimeInput);
-	
-
 	oscillators[frequency].stop(context.currentTime);
 	oscillators[frequency].disconnect();
-	
 	// (1000/(Math.round(tempo/60)))
 	minNoteDuration = parseInt (minNoteDuration +  ((tempo/60) * (lastTimeInput / 1000)));
 	// console.log("duration",minNoteDuration);
-	
 	Transcribe(note,minNoteDuration);
 	minNoteDuration = 1;
 	
@@ -92,12 +84,10 @@ function success(midi) {
 	var inputs = midi.inputs.values();
 	// inputs is an Iterator
 	for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
-		// each time there is a midi message call the onMIDIMessage function
+		// ogni volta che ricevo un midiMessage chiamo la funzione onMIDIMessage
 		input.value.onmidimessage = onMIDIMessage;
 	}
 }
-
-
 
 
 // controllo flusso midi input output e fallimento
@@ -106,7 +96,7 @@ function failure() {
 }
 
 function onMIDIMessage(message) {
-
+	
 	// console.log("tipo di controllo", message.data[0], "nota",
 	// message.data[1],"intensità", message.data[2]);
 	var frequency = midiNoteToFrequency(message.data[1]);
@@ -162,6 +152,8 @@ function playNote(frequency) {
 
 }
 
+
+// fermo il suono generato dall'oscillatore alla frequenza indicata
 function stopNote(frequency) {
 	oscillators[frequency].stop(context.currentTime);
 	oscillators[frequency].disconnect();
@@ -197,12 +189,12 @@ function writePause (){
 
 var measure ;
 
+// calcolo l'unita di tempo del brano
 
 function calculateSignature(){
 	var signature = $('#timeSignature').val();
 // console.log("sign",signature);
 	var res = parseInt(signature.substr(0, 1));
-	
 	measure = res;
 // console.log("global",measure);
 }
@@ -237,8 +229,7 @@ var rec = (document.getElementById("rec"));
 var recXs = (document.getElementById("recxs"));
 
 function startTranscribe() {
-
-
+	
 	if(rec.value=="ON" || recXs.value=="ON" ){
 		  stopTranscribe();
 		  rec.value="OFF";
@@ -252,18 +243,17 @@ if(rec.value=="OFF" || recXs.value=="OFF"){
 			rec.value="ON";
 			recXs.value="ON";
 			 return;
-	}
-
-
-	
+	}	
 }
+
+
+// arresto la trascrizione e pulisco i due array di supporto che uso
 
 function stopTranscribe() {
 
 	clearTimeout(updateMetronome);
 	canTranscribe = false;
 // console.log("transcribe",canTranscribe);
-	// rendering da isolare in una funzione
 	renderSheet(melodyArray,timingArray);
 	melodyArray = [];
 	timingArray = [];
@@ -276,7 +266,6 @@ function stopTranscribe() {
 function Transcribe(note , duration) {
 	if (canTranscribe) {
 	// inserire pezzo come contenitore per l'output
-		
 		melodyArray.push(transcription_map[note] + duration);
 		timingArray.push(duration);
 		noteNameArray.push(transcription_map[note]);
@@ -305,11 +294,8 @@ function renderSheet (melodyArray,timingArray){
 		 	addState(stato);
 	 }
 	 
-
-
 // console.log("string",melodyString);
 	 
-	
 	 v.value = v.value + melodyArray.join("");
 	// ABCJS.renderAbc("paper0", v.value);
 // addState(v.value);
@@ -323,10 +309,10 @@ function renderSheet (melodyArray,timingArray){
 var battuta = 0;
 var numTotBattute = 0 ;
 
+
+//quantizzazione della partitura appena registrata
+
 function quantize (melodyArray , timingArray){
-
-	
-
 	
 	for (j = 0 ; j<timingArray.length ; j++){
 		
@@ -383,6 +369,8 @@ function quantize (melodyArray , timingArray){
 	}
 }
 
+
+//mappa per tutti i segnali midi di tipo "keyboard"
 var midi_map = {
 
 
@@ -486,6 +474,7 @@ var midi_map = {
 
 };
 
+//mappa per tutti i segnali "abc Notation" da convertire
 var transcription_map = {
 
 	// tasti bianchi

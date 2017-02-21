@@ -36,6 +36,13 @@ function addState(state, state2) {
 	levels++;
 }
 
+
+
+
+
+
+
+
 function init() {
 
 	$(".editNote_menu").hide();
@@ -61,29 +68,28 @@ function init() {
 
 	headersContainer = otherAbc.value;
 	addState(abcText.value);
-	//console.log("value", abcText);
+	// console.log("value", abcText);
 
 }
 
-/*
- * function autoQ() { console.log("asdasgadgasjfjn"); var cont = 0; for (i = 0;
- * i < melody.length; i++) { if (melody[i] !== "\n") cont++
- * 
- * if (cont === 5) { melody.splice(i + 1, 0, "\n"); abcText.value =
- * abcText.value + "\n"; cont = 0; } }
- * 
- * 
- * 
- * 
- * //renderThisAbc(); }
- */
+
+window.onload = function() {
+	init();
+	
+	abc_editor = new window.ABCJS.Editor
+	("headers", {paper_id : "paper0",warnings_id : "warnings",parser_options : {},render_options : {editable : true,add_classes : true}	});
+
+}
+
+
+// FUNZIONI DI UTILITA' PER LA GESTIONE DELLA PARTITURA //
 
 function overWrite() {
 
 	states.splice(levels, states.length);
 	melody.splice(levels - 1, melody.length);
-	//console.log("numero di stati dopo overwrite:", states.length);
-	//console.log("numero di livelli dopo overwrite:", levels);
+	// console.log("numero di stati dopo overwrite:", states.length);
+	// console.log("numero di livelli dopo overwrite:", levels);
 
 }
 
@@ -92,8 +98,6 @@ function addToMelody(arrayMelody) {
 }
 
 function reset() {
-	// for (i = 0; i < states.length; i++)
-	// undo();
 
 	abcText.value = states[0];
 	levels = 1;
@@ -104,17 +108,15 @@ function reset() {
 
 function undo() {
 
-	//console.log("undo prima", levels);
-	//console.log("lunghezza", states.length);
-	//console.log("array melody undo", melody);
-
+	// console.log("undo prima", levels);
+	// console.log("lunghezza", states.length);
+	// console.log("array melody undo", melody);
 	if (levels > 1) {
 		abcText.value = states[levels - 2];
 		levels--;
 
 	}
-
-	//console.log("undo dopo", levels);
+	// console.log("undo dopo", levels);
 	ensembleAll();
 }
 
@@ -125,32 +127,28 @@ function redo() {
 			melody.splice(i, 1);
 		}
 	}
-//	console.log("array melody redo", melody);
-//	console.log("redo prima", levels);
+	// console.log("array melody redo", melody);
+	// console.log("redo prima", levels);
 	if (levels < states.length) {
 		abcText.value = states[levels];
 		levels++;
 	}
 
-	//console.log("redo dopo", levels);
+	// console.log("redo dopo", levels);
 	ensembleAll();
 
 }
 
 function renderThisAbc() {
-
-	//console.log("melody array", melody);
-
+	// console.log("melody array", melody);
 	addState(abcText.value);
-
-//	console.log("push", abcText.value);
+	// console.log("push", abcText.value);
 	// ABCJS.renderAbc("paper0", abcText.value);
 	ensembleAll();
 
 }
 
 function pushNewFigure(musicalFigure) {
-
 	overWrite();
 	melody.push(musicalFigure);
 	abcText.value = abcText.value + musicalFigure;
@@ -205,14 +203,15 @@ function pitch() {
 
 	}
 
-	//console.log("octave", octave);
+	// console.log("octave", octave);
 	return octave;
 }
 
-function writeA() {
+// GESTIONE INSERIMENTI DI TUTTE LE FIGURE MUSICALI //
 
+function writeA() {
 	pushNewFigure("#A" + pitch() + length() + "#");
-	//console.log("test");
+	// console.log("test");
 }
 function writeB() {
 	pushNewFigure("#B" + pitch() + length() + "#");
@@ -238,21 +237,6 @@ function writeG() {
 function writeZ() {
 	pushNewFigure("#z" + length() + "#");
 }
-/*
- * var symbol = ""; var melody_index = ""; var melody_lenght = "";
- * 
- * 
- * function insertSymbolLeft(symbol) { melody = abcText.value.split("#");
- * melody.splice(melody.length-2,0,symbol); }
- */
-
-/*
- * function purgeMelody() { console.log("Purge this melody"); console.log("array
- * melody in purge ", JSON.stringify(melody));
- * 
- * for (i = 0; i < melody.length; i++) console.log("elemento di melody",
- * melody[i], "\n"); }
- */
 
 function writeChord() {
 	if (document.getElementById("chord").value == "ON") {
@@ -281,13 +265,9 @@ function insertSymbolLeft(symbol) {
 	var testArray = [];
 	testString = melody.join("");
 	testArray = testString.split("#");
-
-	//console.log("testArray", testArray);
-
+	// console.log("testArray", testArray);
 	melody = abcText.value.split("#");
-
 	// console.log("melody", melody)
-
 	melody.splice(melody.length - 2, 0, symbol);
 	melody.push("#");
 	abcText.value = melody.join("");
@@ -321,7 +301,7 @@ function doubleFlat() {
 		insertSymbolLeft("#__");
 }
 
-// chiavi
+// CHIAVI VARIE
 function writeAltoClef() {
 	pushNewFigure("#[K:clef=alto]#");
 }
@@ -368,7 +348,7 @@ function writeTie() {
 	pushNewFigure("#- #");
 }
 
-// Segni di espressione
+// SEGNI DI ESPRESSIONE
 
 function writeFFFF() {
 	pushNewFigure("#!ffff! #");
@@ -430,16 +410,8 @@ function properties_apply() {
 
 	calculateSignature();
 	headersContainer = headers.join("");
-	// mergeHeaders(headersContainer);
 	ensembleAll();
-	// renderThisAbc();
 
-	/*
-	 * var string = [ abcText.value ]; var strong = string.join("");
-	 * 
-	 * strong = strong.replace(headers[0], "T:"CIPPOLIPPO");
-	 * console.log(strong);
-	 */
 }
 
 var x1, y1;
@@ -470,30 +442,11 @@ function ensembleAll() {
 	// var battuta = document.getElementsByClassName("m");
 
 	svgNotes = $("path:not(.none, .staff, .staff-extra, .symbol, .beam-elem)"); // seleziono
-	// tutti
-	// i
-	// figli
-	// di
-	// svg
-	// tranne
-	// elementi
-	// nulli,
-	// chiavi
-	// varie,
-	// simbolo
-	// della
-	// time
-	// signature
-	// ecc
-	// ecc
+	// tutti i figli di svg tranne elementi nulli, chiavi varie, simbolo della
+	// time signature ecc ecc
 	// svgNotes = document.getElementsByClassName("note");
 	var contatoreAccapo = 0;
-	/*
-	 * for (var i = melody.length - 1; i >= 0; i--) { if (melody[i] === "\n") {
-	 * melody.splice(i, 1); } }
-	 */
-	//console.log("array melody maledetto", melody);
-
+	// console.log("array melody maledetto", melody);
 	for (var i = 0; i < svgNotes.length; i++) {
 		svgNotes[i].setAttribute("id", "nota" + i);
 		svgNotes[i].style.cursor = "pointer";
@@ -506,10 +459,10 @@ function ensembleAll() {
 			this_id = this.id;
 			this_id_num = this_id.replace("nota", "");
 			ok_thisId = parseInt(this_id_num);
-			//console.log("nota numero", ok_thisId);
-			//console.log("this id num", this_id_num);
+			// console.log("nota numero", ok_thisId);
+			// console.log("this id num", this_id_num);
 
-		//	console.log("sono i:", i);
+			// console.log("sono i:", i);
 
 			var text = $("#nota" + (ok_thisId)).attr("class");
 			// \d prende solo un digit singolo // \d+ prende la prima sequenza
@@ -519,7 +472,7 @@ function ensembleAll() {
 			var regex = new RegExp(/l\d+/);
 			var delta = parseInt(regex.exec(text).toString().substring(1));
 
-			//console.log("ho clickato una nota evviva");
+			// console.log("ho clickato una nota evviva");
 
 			$(".editNote_menu").hide();
 
@@ -528,7 +481,7 @@ function ensembleAll() {
 			x1 = x;
 			y1 = y;
 
-			//console.log("coordinate:", x, y);
+			// console.log("coordinate:", x, y);
 
 			$(".click_menu").show();
 
@@ -538,9 +491,9 @@ function ensembleAll() {
 			del.onclick = function() {
 
 				$(".click_menu").hide();
-			//	console.log("sono il delta con this_id_num", this_id_num);
-			//	console.log("sono il delta con delta", delta);
-			//	console.log("sono il delta con delta", this_id_num + delta);
+				// console.log("sono il delta con this_id_num", this_id_num);
+				// console.log("sono il delta con delta", delta);
+				// console.log("sono il delta con delta", this_id_num + delta);
 
 				melody.splice(ok_thisId + delta, 1);
 				abcText.value = melody.join("#");
@@ -567,10 +520,10 @@ function ensembleAll() {
 					overWrite();
 					$(".editNote_menu").hide();
 
-				//	console.log("mod.dete", delta);
+					// console.log("mod.dete", delta);
 					melody[ok_thisId + delta] = edit_text.value;
 					abcText.value = melody.join("#");
-					//console.log("valore editText Modify", edit_text.value);
+					// console.log("valore editText Modify", edit_text.value);
 					renderThisAbc();
 				}
 
@@ -579,7 +532,7 @@ function ensembleAll() {
 					$(".editNote_menu").hide();
 					melody.splice(ok_thisId + 1, 0, edit_text.value);
 					abcText.value = melody.join("#");
-				//	console.log("valore editText Insert", edit_text.value);
+					// console.log("valore editText Insert", edit_text.value);
 					renderThisAbc();
 
 				}
@@ -590,7 +543,7 @@ function ensembleAll() {
 
 	}
 
-	// //////////play/stop/animazione cursore /////////////////////////
+	// PLAY, STOP CURSORE //
 	play_this.onclick = function() {
 		ABCJS.renderPlayMidi(midi, otherAbc.value, {}, {}, {});
 		$(".midi > a").css("display", "none");
@@ -628,19 +581,72 @@ function load() {
 		var text = event.target.result.toString();
 		var text1 = text.split("--");
 
-	//	console.log("AAAAAAAA", text1[0]);
-	//	console.log("BBBBBBBB", text1[1]);
+		// console.log("AAAAAAAA", text1[0]);
+		// console.log("BBBBBBBB", text1[1]);
 
 		headersContainer = text1[0];
 		abcText.value = text1[1];
-	//	console.log("testooooo", otherAbc.value)
+		// console.log("testooooo", otherAbc.value)
 		ensembleAll();
 	}
 	reader.readAsText(fileLoaded, "UTF-8");
-	
-	//console.log("melody after upload",melody);
+
+	// console.log("melody after upload",melody);
 
 }
+
+
+
+
+function downloadMidi() {		
+	var v = document.getElementById('headers');
+	
+	var mParams = '{ "parserParams":[{"print":true, "header_only":false, "stop_on_warning":false}],'
+			+ ' "engraverParams":[{"scale":1, "staffwidth":740, "paddingtop":15, "paddingbottom":30,'
+			+ ' "paddingright":50, "paddingleft":15, "editable":true, "add_classes":true }]}';
+
+	param = JSON.parse(mParams);
+	ABCJS.renderMidi(midi, v.value, param.parserParams[0], {qpm : 180,program : 2}, {startingTune : 0});
+	$(".midi > a").css("display", "none");
+
+	return false;
+}
+
+
+
+function stopMIDI() {
+	//stop( midlink );
+	window.ABCJS.stopAnimation();
+	MIDIjs.stop();
+
+}
+
+
+
+	/*
+	function animateCursor() {
+	
+	var paper = document.getElementById('paper0');
+	window.ABCJS.startAnimation(paper, abc_editor.tunes[0], {"showCursor" : true,"bpm" : 120 });
+	
+	}
+	
+	function playMIDI() {
+	var v = document.getElementById('abc');
+	ABCJS.renderPlayMidi(midi, v.value, {}, {}, {});
+	var output = $("#midi a").attr("href");
+	$(".midi > a").css("display", "none");
+	MIDIjs.play(output);
+	}
+	
+	function stopCurrentlyPlayingTune() {
+	MIDI.player.stop();
+	}
+	
+	*/
+
+
+
 
 // SHORTCUTS VARIE
 
@@ -766,7 +772,6 @@ shortcut.add("Shift+R", function() {
 	'target' : document
 });
 
-
 shortcut.add("Shift+C", function() {
 	reset();
 
@@ -775,8 +780,3 @@ shortcut.add("Shift+C", function() {
 	'propagate' : true,
 	'target' : document
 });
-
-
-
-
-
