@@ -1,16 +1,13 @@
 @charset "utf-8";
 /* CSS Document */
-
-html{
-	zoom:0.80 !important;
+html {
+	zoom: 0.80 !important;
 }
 
 body {
 	background: url(../img/theatre.jpg) no-repeat left top fixed;
-	
 	background-size: cover;
 	background-repeat: no-repeat;
-	
 }
 
 #optionxs {
@@ -520,20 +517,25 @@ svg {
 	padding: 3px;
 }
 
-
-
-::-webkit-scrollbar
-{
-  width: 12px;  /* for vertical scrollbars */
-  height: 12px; /* for horizontal scrollbars */
+::-webkit-scrollbar {
+	width: 12px; /* for vertical scrollbars */
+	height: 12px; /* for horizontal scrollbars */
 }
 
-::-webkit-scrollbar-track
-{
-  background: rgba(0, 0, 0, 0.1);
+::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.1);
 }
 
-::-webkit-scrollbar-thumb
-{
-  background: rgba(0, 0, 0, 0.5);
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+
+@media (max-width: 1199px) {
+	
+	svg>*{
+		width: 10% !important;
+	}
+	
+	
 }

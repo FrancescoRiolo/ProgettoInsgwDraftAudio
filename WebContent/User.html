@@ -11,7 +11,7 @@
 <script src="midi/abcjs_basic_2.3-min.js" type="text/javascript"></script>
 <script src="midi/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
-<script type='text/javascript' src=js/shortcut.js></script>
+
 <script src="midi/editor.js" type='text/javascript'></script>
 
 
@@ -215,20 +215,20 @@ K:Bm
 		<div id="primaRiga" class="row">
 			<div id="traditionalNotationxs" class="visible-xs">
 				<div class="col-xs-12">
-					<button id="doxs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="rexs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="mixs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="faxs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="solxs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="laxs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="sixs" class="btn btn-default noteButtonxs"
-						type="button"></button>
+					<button onclick="writeC()" id="doxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeD()" id="rexs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeE()" id="mixs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeF()" id="faxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeG()" id="solxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeA()" id="laxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeB()" id="sixs"
+						class="btn btn-default noteButtonxs" type="button"></button>
 					<div class="row  rigaInterna">
 						<div class="col-xs-6">
 							<label>Pitch</label>
@@ -406,66 +406,66 @@ K:Bm
 				</div>
 			</form>
 			<div id="menuSymbolButtonxs" class="hidden">
-				<button id="sharpxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="doublesharpxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="neutralxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="flatxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="doubleflatxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="cleftreblexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="restButtonxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="enldineButtonxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="clefaltoxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="clefbassxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="singlebarlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="doublebarlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="close1barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="close2barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="repeat1barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="repeat2barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="repeat3barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="tiexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="ppppxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="pppxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="ppxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="pxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="mpxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="sfzxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="mfxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="ffffxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="fffxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="ffxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="fxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="chordxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
+				<button onclick="sharp()" id="sharpxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="doubleSharp()" id="doublesharpxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="natural()" id="neutralxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="flat()" id="flatxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="doubleFlat()" id="doubleflatxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="wirteTrebleClef()" id="cleftreblexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeZ()" id="restButtonxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="endOfTheLine()" id="enldineButtonxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeAltoClef()" id="clefaltoxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="wirteBassClef()" id="clefbassxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeSingleBar()" id="singlebarlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeDoubleBar()" id="doublebarlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeClosingStartBar()" id="close1barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeClosingEndBar()" id="close2barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeRepeatStart()" id="repeat1barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeRepeatEnd()" id="repeat2barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="RepeatEndStart()" id="repeat3barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeTie()" id="tiexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writePPPP()" id="ppppxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writePPP()" id="pppxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writePP()" id="ppxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeP()" id="pxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeMP()" id="mpxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeSF()" id="sfzxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeMF()" id="mfxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFFFF()" id="ffffxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFFF()" id="fffxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFF()" id="ffxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFORTE()" id="fxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeChord()" id="chordxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
 			</div>
 			<div id="menuSymbolButton" class="hidden-xs">
 				<button onclick="sharp()" id="sharp"
@@ -538,20 +538,24 @@ K:Bm
 					type="button"></button>
 				<button id="pausexs" class="btn btn-default optionButtonxs"
 					type="button"></button>
-				<button id="stopxs" class="btn btn-default optionButtonxs"
-					type="button"></button>
-				<button id="resetxs" class="btn btn-default optionButtonxs"
-					type="reset"></button>
-				<button id="undoxs" class="btn btn-default optionButtonxs"
-					type="button"></button>
-				<button id="redoxs" class="btn btn-default optionButtonxs"
-					type="button"></button>
-				<button id="savexs" class="btn btn-default optionButtonxs"
-					type="button"></button>
-				<button id="downloadxs" class="btn btn-default optionButtonxs"
-					type="button"></button>
+				<button onclick="stopMIDI()" id="stopxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="reset()" id="resetxs"
+					class="btn btn-default optionButtonxs" type="reset"></button>
+				<button onclick="undo()" id="undoxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="redo()" id="redoxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="save()" id="savexs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="requestShare()" id="forkxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="like()" id="likexs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="downloadMidi()" id="downloadxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
 			</div>
-			<div id="playStopBar" class="hidden-xs col-sm-6 col-md-5">
+			<div id="playStopBar" class="hidden-xs col-sm-6 col-md-5 col-lg-3">
 				<button id="play" class="btn btn-default optionButton" type="button"></button>
 				<button onclick="stopTranscribe()" id="pause"
 					class="btn btn-default optionButton" type="button"></button>
@@ -565,6 +569,10 @@ K:Bm
 					class="btn btn-default optionButton" type="button"></button>
 				<button onclick="save()" id="save"
 					class="btn btn-default optionButton" type="button"></button>
+				<button onclick="requestShare()" id="fork"
+					class="btn btn-default optionButton" type="button"></button>
+				<button onclick="like()" id="like"
+					class="btn btn-default optionButton" type="button"></button>
 
 				<label id="upload" class="btn btn-default optionButton" for="load"></label>
 				<input class="hidden" id="load" type="file" onchange="load()">
@@ -573,7 +581,7 @@ K:Bm
 				<div name="midi" class="midi" id="midi"></div>
 			</div>
 			<div id="undoRedoBar" class="hidden-xs col-sm-1 col-md-3"></div>
-			<div id="metronomoBarxs" class="visible-xs">
+			<div id="metronomoBarxs" class="hidden-xs">
 				<button id="recxs" class="btn btn-default btn-circle optionButtonxs"
 					type="button"></button>
 				<label>Metronomo</label> <input id="metronomoxs" class="Dropdown"
@@ -594,7 +602,7 @@ K:Bm
 		</div>
 
 		<div id="quartaRiga" class="row">
-			<div id="Spartito" class="col-md-12 col-sm-12">
+			<div id="Spartito" class="col-md-12 col-sm-12 ">
 				<div id="paper0"
 					class="paper col-sm-8 col-sm-push-2 col-md-8 col-md-push-2">
 					<div id="score" class="abcScore"></div>

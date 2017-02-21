@@ -34,6 +34,7 @@ body {
 }
 
 #metronomoBarxs {
+	display : none;
 	text-align: center;
 }
 
@@ -385,11 +386,13 @@ bottoni OptionButton
 
 #save, #savexs {
 	background-image: url(../img/save.png);
+		background-color: white!important;
 }
 
 #reset, #resetxs {
 	display : none;
 	background-image: url(../img/reset.png);
+		background-color: white!important;
 }
 
 #download, #downloadxs {
@@ -599,4 +602,16 @@ svg {
 ::-webkit-scrollbar-thumb
 {
   background: rgba(0, 0, 0, 0.5);
+}
+
+
+#fork, #forkxs{
+	background-image: url(../img/share.png);
+	background-color: white!important;
+}
+
+#like, #likexs{
+	background-image: url(../img/like.png);
+		background-color: white!important;
+
 }

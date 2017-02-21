@@ -16,7 +16,7 @@
 
 
 <script type="text/javascript">
-/*	$(".svg").css("background-color", "yellow"); */
+	/*	$(".svg").css("background-color", "yellow"); */
 
 	window.onload = function() {
 
@@ -49,32 +49,34 @@
 
 	}
 
-	function animateCursor() {
+	/*
+	 function animateCursor() {
 
-		var paper = document.getElementById('paper0');
-		window.ABCJS.startAnimation(paper, abc_editor.tunes[0], {
-			"showCursor" : true,
-			"bpm" : 120
-		});
+	 var paper = document.getElementById('paper0');
+	 window.ABCJS.startAnimation(paper, abc_editor.tunes[0], {
+	 "showCursor" : true,
+	 "bpm" : 120
+	 });
 
-	}
+	 }
 
-	function playMIDI() {
-		var v = document.getElementById('abc');
-		//var cooleys = 'X:1\nT: Cooley\'s\nM: 4/4\nL: 1/8\nR: reel\nK: Emin\nD2|:"Em"EB{c}BA B2 EB|~B2 AB dBAG|"D"FDAD BDAD|FDAD dAFD|\n"Em"EBBA B2 EB|B2 AB defg|"D"afe^c dBAF|1"Em"DEFD E2 D2:|2"Em"DEFD E2 gf||\n|:"Em"eB B2 efge|eB B2 gedB|"D"A2 FA DAFA|A2 FA defg|\n"Em"eB B2 eBgB|eB B2 defg|"D"afe^c dBAF|1"Em"DEFD E2 gf:|2"Em"DEFD E4|]\n';
-		ABCJS.renderPlayMidi(midi, v.value, {}, {}, {});
-		var output = $("#midi a").attr("href");
-		//console.log("OUTPUT", output);
-		$(".midi > a").css("display", "none");
-		MIDIjs.play(output);
+	 function playMIDI() {
+	 var v = document.getElementById('abc');
+	 //var cooleys = 'X:1\nT: Cooley\'s\nM: 4/4\nL: 1/8\nR: reel\nK: Emin\nD2|:"Em"EB{c}BA B2 EB|~B2 AB dBAG|"D"FDAD BDAD|FDAD dAFD|\n"Em"EBBA B2 EB|B2 AB defg|"D"afe^c dBAF|1"Em"DEFD E2 D2:|2"Em"DEFD E2 gf||\n|:"Em"eB B2 efge|eB B2 gedB|"D"A2 FA DAFA|A2 FA defg|\n"Em"eB B2 eBgB|eB B2 defg|"D"afe^c dBAF|1"Em"DEFD E2 gf:|2"Em"DEFD E4|]\n';
+	 ABCJS.renderPlayMidi(midi, v.value, {}, {}, {});
+	 var output = $("#midi a").attr("href");
+	 //console.log("OUTPUT", output);
+	 $(".midi > a").css("display", "none");
+	 MIDIjs.play(output);
 
-		//setTimeout(animateCursor, 700);
+	 //setTimeout(animateCursor, 700);
 
-	}
-
-	function stopCurrentlyPlayingTune() {
-		MIDI.player.stop();
-	}
+	 }
+	 function stopCurrentlyPlayingTune() {
+	 MIDI.player.stop();
+	 }
+	
+	 */
 
 	function stopMIDI() {
 		//stop( midlink );
@@ -205,20 +207,20 @@ K:C%
 		<div id="primaRiga" class="row">
 			<div id="traditionalNotationxs" class="visible-xs">
 				<div class="col-xs-12">
-					<button id="doxs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="rexs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="mixs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="faxs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="solxs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="laxs" class="btn btn-default noteButtonxs"
-						type="button"></button>
-					<button id="sixs" class="btn btn-default noteButtonxs"
-						type="button"></button>
+					<button onclick="writeC()" id="doxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeD()" id="rexs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeE()" id="mixs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeF()" id="faxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeG()" id="solxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeA()" id="laxs"
+						class="btn btn-default noteButtonxs" type="button"></button>
+					<button onclick="writeB()" id="sixs"
+						class="btn btn-default noteButtonxs" type="button"></button>
 					<div class="row  rigaInterna">
 						<div class="col-xs-6">
 							<label>Pitch</label>
@@ -396,66 +398,66 @@ K:C%
 				</div>
 			</form>
 			<div id="menuSymbolButtonxs" class="hidden">
-				<button id="sharpxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="doublesharpxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="neutralxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="flatxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="doubleflatxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="cleftreblexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="restButtonxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="enldineButtonxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="clefaltoxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="clefbassxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="singlebarlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="doublebarlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="close1barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="close2barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="repeat1barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="repeat2barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="repeat3barlinexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="tiexs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="ppppxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="pppxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="ppxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="pxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="mpxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="sfzxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="mfxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="ffffxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="fffxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="ffxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="fxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
-				<button id="chordxs" class="btn btn-default symbolButtonxs"
-					type="button"></button>
+				<button onclick="sharp()" id="sharpxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="doubleSharp()" id="doublesharpxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="natural()" id="neutralxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="flat()" id="flatxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="doubleFlat()" id="doubleflatxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="wirteTrebleClef()" id="cleftreblexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeZ()" id="restButtonxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="endOfTheLine()" id="enldineButtonxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeAltoClef()" id="clefaltoxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="wirteBassClef()" id="clefbassxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeSingleBar()" id="singlebarlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeDoubleBar()" id="doublebarlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeClosingStartBar()" id="close1barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeClosingEndBar()" id="close2barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeRepeatStart()" id="repeat1barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeRepeatEnd()" id="repeat2barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="RepeatEndStart()" id="repeat3barlinexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeTie()" id="tiexs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writePPPP()" id="ppppxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writePPP()" id="pppxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writePP()" id="ppxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeP()" id="pxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeMP()" id="mpxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeSF()" id="sfzxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeMF()" id="mfxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFFFF()" id="ffffxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFFF()" id="fffxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFF()" id="ffxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeFORTE()" id="fxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
+				<button onclick="writeChord()" id="chordxs"
+					class="btn btn-default symbolButtonxs" type="button"></button>
 			</div>
 			<div id="menuSymbolButton" class="hidden-xs">
 				<button onclick="sharp()" id="sharp"
@@ -528,21 +530,23 @@ K:C%
 					type="button"></button>
 				<button id="pausexs" class="btn btn-default optionButtonxs"
 					type="button"></button>
-				<button id="stopxs" class="btn btn-default optionButtonxs"
-					type="button"></button>
-				<button id="resetxs" class="btn btn-default optionButtonxs"
-					type="reset"></button>
-				<button id="undoxs" class="btn btn-default optionButtonxs"
-					type="button"></button>
-				<button id="redoxs" class="btn btn-default optionButtonxs"
-					type="button"></button>
-				<button id="savexs" class="btn btn-default optionButtonxs"
-					type="button"></button>
-				<button id="downloadxs" class="btn btn-default optionButtonxs"
-					type="button"></button>
+				<button onclick="stopMIDI()" id="stopxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="reset()" id="resetxs"
+					class="btn btn-default optionButtonxs" type="reset"></button>
+				<button onclick="undo()" id="undoxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="redo()" id="redoxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				<button onclick="save()" id="savexs"
+					class="btn btn-default optionButtonxs" type="button"></button>
+				
+				
+				<button onclick="downloadMidi()" id="downloadxs"
+					class="btn btn-default optionButtonxs" type="button"></button>
 			</div>
 			<div id="playStopBar" class="hidden-xs col-sm-6 col-md-5">
-				<button id="play" class="btn btn-default optionButton" type="button"></button>
+				<button onclick="playMIDI()" id="play" class="btn btn-default optionButton" type="button"></button>
 				<button onclick="stopTranscribe()" id="pause"
 					class="btn btn-default optionButton" type="button"></button>
 				<button onclick="stopMIDI()" id="stop"
@@ -563,10 +567,11 @@ K:C%
 			</div>
 			<div id="undoRedoBar" class="hidden-xs col-sm-1 col-md-3"></div>
 			<div id="metronomoBarxs" class="visible-xs">
-				<button id="recxs" class="btn btn-default btn-circle optionButtonxs"
+				<button onclick="startTranscribe()" id="recxs" value="OFF" class="btn btn-default btn-circle optionButtonxs"
 					type="button"></button>
 				<label>Metronomo</label> <input id="metronomoxs" class="Dropdown"
-					type="number" min="30" max="280" value="120"">
+					type="number" min="40" max="280" value="120" onchange="setTempo()"
+						onkeyup="setTempo()">
 			</div>
 			<div id="metronomoBar" class="hidden-xs col-sm-5 col-md-4">
 				<div id="recbar" class="hidden-xs  col-sm-8 col-md-8">

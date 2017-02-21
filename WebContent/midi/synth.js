@@ -12,9 +12,9 @@ var keyboard = new QwertyHancock({
 var context = new AudioContext(), masterVolume = context.createGain(), oscillators = {};
 masterVolume.gain.value = 0.8;
 masterVolume.connect(context.destination);
-//document.getElementById("F3").style.backgroundColor = "green";
+// document.getElementById("F3").style.backgroundColor = "green";
 
-//$("#F3").css("background-color","green");
+// $("#F3").css("background-color","green");
 
 // variabili da correggere
 var melodyArray= [] ;
@@ -27,7 +27,7 @@ var lastTimeInput;
 
 // lo definirà l'utente questo parametro
 var tempo = $("#metronomo").val();
-//console.log("Tempo value is:",tempo);
+// console.log("Tempo value is:",tempo);
 
 
 var canWritePause = true;
@@ -75,7 +75,7 @@ var context = new AudioContext(), oscillators = {};
 // da invocare ogni volta che cambio il metronomo
 function setTempo(){
 	tempo = $("#metronomo").val();
-	//console.log("new Tempo value is:",tempo);
+	// console.log("new Tempo value is:",tempo);
 }
 
 
@@ -200,11 +200,11 @@ var measure ;
 
 function calculateSignature(){
 	var signature = $('#timeSignature').val();
-//	console.log("sign",signature);
+// console.log("sign",signature);
 	var res = parseInt(signature.substr(0, 1));
 	
 	measure = res;
-//	console.log("global",measure);
+// console.log("global",measure);
 }
 
 
@@ -222,7 +222,7 @@ function playMetronomeSound(){
     beat++;
 
  // console.log ("beats:",beat);
- //   console.log ("column:",column);
+ // console.log ("column:",column);
     
     writePause();
     
@@ -233,29 +233,24 @@ function playMetronomeSound(){
 
 // update del metronomo da raffinare
 var updateMetronome;
-
+var rec = (document.getElementById("rec"));
+var recXs = (document.getElementById("recxs"));
 
 function startTranscribe() {
 
 
-	if(document.getElementById("rec").value=="ON"){
+	if(rec.value=="ON" || recXs.value=="ON" ){
 		  stopTranscribe();
-		  document.getElementById("rec").value="OFF";
+		  rec.value="OFF";
+		  recXs.value="OFF";
 		  return;
 	  }
 	
-if(document.getElementById("rec").value=="OFF"){
+if(rec.value=="OFF" || recXs.value=="OFF"){
 			canTranscribe = true;
-			updateMetronome = setInterval(playMetronomeSound, (1000/(tempo/60))); // è
-																					// meglio
-																					// non
-																					// approssimare
-																					// con
-																					// round
-																					// altrimenti
-																					// da
-																					// problemif
-			document.getElementById("rec").value="ON";
+			updateMetronome = setInterval(playMetronomeSound, (1000/(tempo/60))); 
+			rec.value="ON";
+			recXs.value="ON";
 			 return;
 	}
 
@@ -267,7 +262,7 @@ function stopTranscribe() {
 
 	clearTimeout(updateMetronome);
 	canTranscribe = false;
-//	console.log("transcribe",canTranscribe);
+// console.log("transcribe",canTranscribe);
 	// rendering da isolare in una funzione
 	renderSheet(melodyArray,timingArray);
 	melodyArray = [];
@@ -374,7 +369,7 @@ function quantize (melodyArray , timingArray){
 			melodyArray.splice(j+1,0,"|");
 			timingArray.splice(j+1,0,"|");
 			// console.log(melodyArray);
-			//console.log(timingArray);
+			// console.log(timingArray);
 			battuta = 0;
 			numTotBattute ++;
 		}
