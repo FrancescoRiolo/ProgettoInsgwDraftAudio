@@ -557,8 +557,8 @@ function ensembleAll() {
 		stop_this.onclick = function() {
 			MIDIjs.stop(midlink);
 			window.ABCJS.stopAnimation();
-		};
-	};
+			};
+};
 
 }
 
@@ -615,14 +615,19 @@ function downloadMidi() {
 
 
 function stopMIDI() {
-	//stop( midlink );
-	window.ABCJS.stopAnimation();
+	//stop( midlink );	window.ABCJS.stopAnimation();
 	MIDIjs.stop();
-
 }
 
+//solo per xs senza cursore per testing
+function playMIDI() {
+	ABCJS.renderPlayMidi(midi, otherAbc.value, {}, {}, {});
+	$(".midi > a").css("display", "none");
+	var midlink = $('.midi > a').attr('href');
+	MIDIjs.play(midlink);
 
 
+	}
 	/*
 	function animateCursor() {
 	
@@ -631,13 +636,7 @@ function stopMIDI() {
 	
 	}
 	
-	function playMIDI() {
-	var v = document.getElementById('abc');
-	ABCJS.renderPlayMidi(midi, v.value, {}, {}, {});
-	var output = $("#midi a").attr("href");
-	$(".midi > a").css("display", "none");
-	MIDIjs.play(output);
-	}
+
 	
 	function stopCurrentlyPlayingTune() {
 	MIDI.player.stop();

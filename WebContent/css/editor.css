@@ -533,9 +533,10 @@ svg {
 
 @media (max-width: 1199px) {
 	
-	svg>*{
-		width: 10% !important;
+
+
+	#quintaRiga{
+	overflow: scroll; 
 	}
-	
 	
 }
