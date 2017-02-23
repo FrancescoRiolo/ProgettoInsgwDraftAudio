@@ -135,3 +135,23 @@ html{
 {
   background: rgba(0, 0, 0, 0.5);
 }
+
+
+
+.form-valid {
+  box-shadow: 0 0 5px #5cd053 !important;
+  background: #fff url(../img/button-ok.png) no-repeat 98% center;
+  border-color: #5cd053 !important;
+  background-position: 98% 20%;
+  background-size: 14% 93%;
+}
+
+
+
+.form-not-valid {
+  box-shadow: 0 0 5px #ff0000!important;
+  background: #fff url(../img/button-no.png) no-repeat 98% center;
+  border-color: #ff0000!important;
+   background-position: 98% 20%;
+  background-size: 14% 93%;
+}

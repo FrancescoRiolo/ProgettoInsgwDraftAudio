@@ -615,3 +615,10 @@ svg {
 		background-color: white!important;
 
 }
+
+#home, #homexs{
+		background: url(../img/home.png) no-repeat center;
+		background-size: 80%;
+		background-color: white!important;
+	
+}
